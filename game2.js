@@ -1,5 +1,4 @@
 try{
-    alert("e");
     const gridSize = 16;
     const gridSizePx = 64;
     class Vec2{
@@ -44,7 +43,7 @@ try{
             this.canvas = document.getElementsByName("board");
             this.canvas.width = gridSize * gridSizePx;
             this.canvas.height = gridSize * gridSizePx;
-            this.ctx = ths.canvas.getContext('2d');
+            this.ctx = this.canvas.getContext('2d');
             alert(this.canvas.width + ":" + (gridSize + gridSizePx));
         }
         update(){
