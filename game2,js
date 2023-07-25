@@ -1,4 +1,5 @@
 try{
+    alert("e");
     const gridSize = 16;
     const gridSizePx = 64;
     class Vec2{
