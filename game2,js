@@ -44,6 +44,7 @@ try{
             this.canvas.width = gridSize * gridSizePx;
             this.canvas.height = gridSize * gridSizePx;
             this.ctx = ths.canvas.getContext('2d');
+            alert(this.canvas.width + ":" + (gridSize + gridSizePx));
         }
         update(){
 
