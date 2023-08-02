@@ -23,9 +23,13 @@ try{
             let b = this.points & i;
             return b > 0;
         }
-        setPoint(pt){
+        setPoint(pt, state){
             let i = 1 << pt;
-            this.points = this.points | i;
+            if(state){
+                this.points = this.points | i;
+            }else{
+                this.points = this.points & ~i;
+            }
         }
         togglePoint(pt){
             this.setPoint(pt, !this.getPoint(pt));
@@ -50,17 +54,19 @@ try{
 
         }
         draw(){
-
+            this.ctx.clearRect(0,0,gridSize*gridSizePx,gridSize*gridSizePx);
+            this.drawGrid();
         }
         drawGrid(){
             for(let x = 0; x < gridSize; x++){
                 for(let y = 0; y < gridSize; y++){
-
+                    this.canvas.strokeRect(x*gridSizePx,y*gridSizePx,gridSizePx,gridSizePx);
                 }
             }
         }
     }
     let game = new Game();
+    game.draw();
 }catch(e){
     alert(e + ":(");
 }
