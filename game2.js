@@ -44,7 +44,7 @@ try{
                     this.grid[x][y] = new Track(new Vec2(x,y));
                 }
             }
-            this.canvas = document.getElementsByName("board");
+            this.canvas = document.getElementById("board");
             this.canvas.width = gridSize * gridSizePx;
             this.canvas.height = gridSize * gridSizePx;
             this.ctx = this.canvas.getContext('2d');
