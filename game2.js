@@ -1,6 +1,8 @@
 try{
     const gridSize = 16;
     const gridSizePx = 64;
+    let width = 0;
+    let height = 0;
     class Vec2{
         x = 0;
         y = 0;
@@ -8,8 +10,20 @@ try{
             this.x = _x;
             this.y = _y;
         }
+        equals(other){
+            return(this.x == other.x && this.y == other.y);
+        }
         static Zero(){
             return new Vec2(0,0);
+        }
+        static One(){
+            return new Vec2(1,1);
+        }
+        static Lerp(a,b,i){
+            o = new Vec2();
+            o.x = (b.x - a.x) * i + a.x;
+			o.y = (b.y - a.y) * i + a.y;
+            return o;
         }
     }
     class Track{
@@ -45,8 +59,10 @@ try{
                 }
             }
             this.canvas = document.getElementById("board");
-            this.canvas.width = gridSize * gridSizePx;
-            this.canvas.height = gridSize * gridSizePx;
+            //this.canvas.width = gridSize * gridSizePx;
+            //this.canvas.height = gridSize * gridSizePx;
+            width = this.canvas.width;
+            height = this.canvas.height; 
             this.ctx = this.canvas.getContext('2d');
             alert(this.canvas.width + ":" + (gridSize + gridSizePx));
         }
@@ -58,10 +74,58 @@ try{
             this.drawGrid();
         }
         drawGrid(){
-            for(let x = 0; x < gridSize; x++){
-                for(let y = 0; y < gridSize; y++){
+            for(let x = 0; x < width/gridSizePx; x++){
+                for(let y = 0; y < height/gridSizePx; y++){
                     this.ctx.strokeRect(x*gridSizePx,y*gridSizePx,gridSizePx,gridSizePx);
                 }
+            }
+        }
+        placeRailLine(start,end){
+            let canPlace = false;
+            if(Math.abs(start.x - end.x) == Math.abs(start.y - end.y)){
+                canPlace = true
+            }
+            if(start.x - end.x == 0){
+                canPlace = true;
+            }
+            if(start.y - end.y == 0){
+                canPlace = true;
+            }
+            if(start.equals(end)){
+                canPlace = false;
+            }
+            if(!canPlace){
+                return;
+            }
+            let dist = Math.max(Math.abs(start.x - end.x), Math.abs(start.y - end.y));
+            let dist2 = new Vec2(start.x - end.x, start.y - end.y);
+            for(let i = 0; i < dist; i++){
+                let cellPos = Vec2.Lerp(start,end,i/dist);
+                let direction = [2];
+                if(dist2.x > 0){
+                    direction = (i == 0 ? [6] : [2,6]);
+                }
+				if(dist2.x < 0){
+					direction = (i == 0 ? [2] : [2,6]);
+				}
+				if(dist2.y > 0){
+					direction = (i == 0 ? [0] : [0,4]);
+				}
+				if(dist2.y < 0){
+					direction = (i == 0 ? [4] : [0,4]);
+				}
+				if(dist2.x > 0 && dist2.y > 0){
+					direction = (i == 0 ? [7] : [3,7]);
+				}
+				if(dist2.x < 0 && dist2.y < 0){
+					direction = (i == 0 ? [3] : [3,7]);
+				}
+				if(dist2.x < 0 && dist2.y > 0){
+					direction = (i == 0 ? [1] : [1,5]);
+				}
+				if(dist2.x > 0 && dist2.y < 0){
+					direction = (i == 0 ? [5] : [1,5]);
+				}
             }
         }
     }
