@@ -60,7 +60,7 @@ try{
         drawGrid(){
             for(let x = 0; x < gridSize; x++){
                 for(let y = 0; y < gridSize; y++){
-                    this.canvas.strokeRect(x*gridSizePx,y*gridSizePx,gridSizePx,gridSizePx);
+                    this.ctx.strokeRect(x*gridSizePx,y*gridSizePx,gridSizePx,gridSizePx);
                 }
             }
         }
