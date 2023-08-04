@@ -1,4 +1,14 @@
 try{
+    const images = [
+	    document.getElementById("straightRail0"),
+	    document.getElementById("straightRail1"),
+	    document.getElementById("straightRail2"),
+	    document.getElementById("straightRail3"),
+	    document.getElementById("straightRail4"),
+	    document.getElementById("straightRail5"),
+	    document.getElementById("straightRail6"),
+	    document.getElementById("straightRail7")
+    ];
     const gridSize = 16;
     const gridSizePx = 64;
     let width = 0;
@@ -48,6 +58,13 @@ try{
         }
         togglePoint(pt){
             this.setPoint(pt, !this.getPoint(pt));
+        }
+        draw(){
+            for(let i = 0; i < 8; i++){
+                if(this.getPoint(i)){
+                    getGame().ctx.drawImage(images[i], this.pos.x * gridSizePx, this.pos.y * gridSizePx);
+                }
+            }
         }
     }
     class Game{
@@ -145,6 +162,9 @@ try{
     }
     let game = new Game();
     game.draw();
+    function getGame(){
+        return game;
+    }
 }catch(e){
     alert(e + ":(");
 }
