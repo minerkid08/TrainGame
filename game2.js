@@ -73,6 +73,11 @@ try{
         }
         draw(){
             this.ctx.clearRect(0,0,gridSize*gridSizePx,gridSize*gridSizePx);
+            for(let x = 0; x < gridSize; x++){
+                for(let y = 0; y < gridSize; y++){
+                    this.grid[x][y].draw();
+                }
+            }
             this.drawGrid();
         }
         drawGrid(){
@@ -85,7 +90,7 @@ try{
         placeRailLine(start,end){
             let canPlace = false;
             if(Math.abs(start.x - end.x) == Math.abs(start.y - end.y)){
-                canPlace = true
+                canPlace = true;
             }
             if(start.x - end.x == 0){
                 canPlace = true;
