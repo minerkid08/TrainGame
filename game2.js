@@ -73,12 +73,12 @@ try{
         }
         draw(){
             this.ctx.clearRect(0,0,gridSize*gridSizePx,gridSize*gridSizePx);
+			this.drawGrid();e
             for(let x = 0; x < gridSize; x++){
                 for(let y = 0; y < gridSize; y++){
                     this.grid[x][y].draw();
                 }
             }
-            this.drawGrid();
         }
         drawGrid(){
             for(let x = 0; x < width/gridSizePx; x++){
