@@ -90,7 +90,7 @@ try{
         }
         draw(){
             this.ctx.clearRect(0,0,gridSize*gridSizePx,gridSize*gridSizePx);
-			this.drawGrid();e
+			this.drawGrid();
             for(let x = 0; x < gridSize; x++){
                 for(let y = 0; y < gridSize; y++){
                     this.grid[x][y].draw();
