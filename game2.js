@@ -61,7 +61,7 @@ try{
         }
         draw(){
             for(let i = 0; i < 8; i++){
-                if(!this.getPoint(i)){
+                if(this.getPoint(i) || true){
                     getGame().ctx.drawImage(images[i], this.pos.x * gridSizePx, this.pos.y * gridSizePx);
                 }
             }
