@@ -60,6 +60,7 @@ try{
             this.setPoint(pt, !this.getPoint(pt));
         }
         draw(){
+            alert("draw");
             for(let i = 0; i < 8; i++){
                 if(this.getPoint(i)){
                     getGame().ctx.drawImage(images[i], this.pos.x * gridSizePx, this.pos.y * gridSizePx);
