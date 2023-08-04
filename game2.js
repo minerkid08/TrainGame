@@ -29,6 +29,7 @@ try{
     class Track{
         pos = Vec2.Zero();
         points = 0;
+        lock = false;
         constructor(p){
             this.pos = p;
         }
@@ -65,6 +66,7 @@ try{
             height = this.canvas.height; 
             this.ctx = this.canvas.getContext('2d');
             alert(this.canvas.width + ":" + (gridSize + gridSizePx));
+            this.drawGrid(new Vec2(0,0),new Vec2(4,4));
         }
         update(){
 
@@ -97,35 +99,42 @@ try{
             if(!canPlace){
                 return;
             }
+            let direction = [2];
+            if(dist2.x > 0){
+                direction = [6,2];
+            }
+			if(dist2.x < 0){
+				direction = [2,6];
+			}
+			if(dist2.y > 0){
+                direction = [0,4];
+            }
+			if(dist2.y < 0){
+				direction = [4,0];
+			}
+			if(dist2.x > 0 && dist2.y > 0){
+				direction = [7,3];
+			}
+			if(dist2.x < 0 && dist2.y < 0){
+				direction = [3,7];
+			}
+			if(dist2.x < 0 && dist2.y > 0){
+				direction = [1,5];
+			}
+			if(dist2.x > 0 && dist2.y < 0){
+				direction = [5,1];
+			}
             let dist = Math.max(Math.abs(start.x - end.x), Math.abs(start.y - end.y));
             let dist2 = new Vec2(start.x - end.x, start.y - end.y);
             for(let i = 0; i < dist; i++){
                 let cellPos = Vec2.Lerp(start,end,i/dist);
-                let direction = [2];
-                if(dist2.x > 0){
-                    direction = (i == 0 ? [6] : [2,6]);
+                var cell = this.grid[cellPos.x][cellPos.y];
+                if(cell.lock){
+                    continue;
                 }
-				if(dist2.x < 0){
-					direction = (i == 0 ? [2] : [2,6]);
-				}
-				if(dist2.y > 0){
-					direction = (i == 0 ? [0] : [0,4]);
-				}
-				if(dist2.y < 0){
-					direction = (i == 0 ? [4] : [0,4]);
-				}
-				if(dist2.x > 0 && dist2.y > 0){
-					direction = (i == 0 ? [7] : [3,7]);
-				}
-				if(dist2.x < 0 && dist2.y < 0){
-					direction = (i == 0 ? [3] : [3,7]);
-				}
-				if(dist2.x < 0 && dist2.y > 0){
-					direction = (i == 0 ? [1] : [1,5]);
-				}
-				if(dist2.x > 0 && dist2.y < 0){
-					direction = (i == 0 ? [5] : [1,5]);
-				}
+                for(let j = (i == dist ? 1 : 2); j < (i == 0 ? 1 : 2); j++){
+                    cell.togglePoint(j);
+                }
             }
         }
     }
