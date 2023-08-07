@@ -161,8 +161,7 @@ try{
                     continue;
                 }
                 for(let j = (i == dist ? 1 : 0); j < (i == 0 ? 1 : 2); j++){
-                    cell.togglePoint(j);
-                    console.log(cellPos.x + ", " + cellPos.y + ", set seg: " + j);
+                    cell.togglePoint(direction[j]);
                 }
             }
         }
@@ -173,5 +172,5 @@ try{
     }
 	game.draw();
 }catch(e){
-    alert(e.stack + ", " + e.lineNumber + "  :(");
+    alert(e.stack + "  :(");
 }
