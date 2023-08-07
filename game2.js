@@ -161,8 +161,9 @@ try{
                 if(cell.lock){
                     continue;
                 }
-                for(let j = (i == dist ? 1 : 2); j < (i == 0 ? 1 : 2); j++){
+                for(let j = (i == dist ? 1 : 0); j < (i == 0 ? 1 : 2); j++){
                     cell.togglePoint(j);
+                    console.log(cellPos.x + ", " + cellPos.y + ", set seg: " + j);
                 }
             }
         }
