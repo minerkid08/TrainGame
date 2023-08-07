@@ -128,6 +128,8 @@ try{
                 return;
             }
             let direction = [2];
+			let dist = Math.max(Math.abs(start.x - end.x), Math.abs(start.y - end.y)); 
+			let dist2 = new Vec2(start.x - end.x, start.y - end.y);
             if(dist2.x > 0){
                 direction = [6,2];
             }
@@ -152,8 +154,6 @@ try{
 			if(dist2.x > 0 && dist2.y < 0){
 				direction = [5,1];
 			}
-            let dist = Math.max(Math.abs(start.x - end.x), Math.abs(start.y - end.y));
-            let dist2 = new Vec2(start.x - end.x, start.y - end.y);
             for(let i = 0; i < dist; i++){
                 let cellPos = Vec2.Lerp(start,end,i/dist);
                 var cell = this.grid[cellPos.x][cellPos.y];
