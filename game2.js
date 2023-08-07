@@ -66,8 +66,8 @@ try{
                         images[i], 
                         this.pos.x * gridSizePx, 
                         this.pos.y * gridSizePx,
-                        gridSize,
-                        gridSize
+                        gridSizePx,
+                        gridSizePx
                     );
                 }
             }
