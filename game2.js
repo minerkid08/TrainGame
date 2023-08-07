@@ -157,7 +157,7 @@ try{
 			}
             for(let i = 0; i < dist; i++){
                 let cellPos = Vec2.Lerp(start,end,i/dist);
-                var cell = this.grid[cellPos.x][cellPos.y];
+                let cell = this.grid[cellPos.x][cellPos.y];
                 if(cell.lock){
                     continue;
                 }
@@ -174,5 +174,5 @@ try{
         return game;
     }
 }catch(e){
-    alert(e + ":(");
+    alert(e + ", " + e.line + "  :(");
 }
