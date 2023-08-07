@@ -154,7 +154,7 @@ try{
 			if(dist2.x > 0 && dist2.y < 0){
 				direction = [5,1];
 			}
-            for(let i = 0; i < dist; i++){
+            for(let i = 0; i < dist+1; i++){
                 let cellPos = Vec2.Lerp(start,end,i/dist);
                 let cell = this.grid[cellPos.x][cellPos.y];
                 if(cell.lock){
