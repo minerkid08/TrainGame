@@ -30,7 +30,7 @@ try{
             return new Vec2(1,1);
         }
         static Lerp(a,b,i){
-            o = new Vec2();
+            let o = new Vec2();
             o.x = (b.x - a.x) * i + a.x;
 			o.y = (b.y - a.y) * i + a.y;
             return o;
