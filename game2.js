@@ -174,5 +174,5 @@ try{
         return game;
     }
 }catch(e){
-    alert(e + ", " + e.line + "  :(");
+    alert(e.stack + ", " + e.lineNumber + "  :(");
 }
