@@ -9,7 +9,7 @@ try{
 	    document.getElementById("straightRail6"),
 	    document.getElementById("straightRail7")
     ];
-    const gridSize = 16;
+    const gridSize = 20;
     const gridSizePx = 64;
     let width = 0;
     let height = 0;
