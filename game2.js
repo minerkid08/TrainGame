@@ -90,6 +90,7 @@ try{
             this.ctx = this.canvas.getContext('2d');
             alert(this.canvas.width + ":" + (gridSize + gridSizePx));
             this.placeRailLine(new Vec2(0,0),new Vec2(4,4));
+            this.draw();
         }
         update(){
 
