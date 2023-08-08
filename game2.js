@@ -74,6 +74,11 @@ try{
         }
     }
     class Game{
+        grid = undefined;
+        canvas = undefined;
+        ctx = undefined;
+        placingLine = false;
+        startPos = new Vec2(0,0);
         constructor(){
             this.grid = new Array(gridSize);
             for(let x = 0; x < gridSize; x++){
@@ -165,6 +170,20 @@ try{
                 }
             }
         }
+        click(event){
+            let screenPos = new Vec2(event.clientX, event.clientY);
+            let mousePos = new Vec2(Math.floor(screenPos.x / gridSizePx), Math.floor(screenPos.y / gridSizePx));
+            if(!this.placingLine){
+                this.startPos = mousePos;
+                this.placingLine = true;
+            }else{
+                this.placeRailLine(this.startPos, mousePos);
+                this.placingLine = false;
+            }
+        }
+    }
+    function onClick(event){
+        getGame.click(event);
     }
     let game = new Game();
     function getGame(){
