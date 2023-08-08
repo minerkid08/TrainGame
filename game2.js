@@ -97,7 +97,6 @@ try{
             this.placeRailLine(new Vec2(0,0),new Vec2(4,4));
         }
         update(){
-
         }
         draw(){
             this.ctx.clearRect(0,0,gridSize*gridSizePx,gridSize*gridSizePx);
@@ -130,7 +129,6 @@ try{
                 canPlace = false;
             }
             if(!canPlace){
-                alert("canPlace");
                 return;
             }
             let direction = [2];
@@ -192,7 +190,7 @@ try{
     function getGame(){
         return game;
     }
-	game.draw();
+	window.setInterval(function(){getGame().draw();}, 50);
 }catch(e){
     alert(e.stack + "  :(");
 }
