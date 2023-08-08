@@ -171,13 +171,13 @@ try{
             }
         }
         click(event){
-            alert("click");
             let screenPos = new Vec2(event.clientX, event.clientY);
             let mousePos = new Vec2(Math.floor(screenPos.x / gridSizePx), Math.floor(screenPos.y / gridSizePx));
             alert("mousePosition: " + mousePos.x + ", " + mousePos.y);
             if(!this.placingLine){
                 this.startPos = mousePos;
                 this.placingLine = true;
+                alert("start");
             }else{
                 this.placeRailLine(this.startPos, mousePos);
                 this.placingLine = false;
