@@ -130,6 +130,7 @@ try{
                 canPlace = false;
             }
             if(!canPlace){
+                alert("canPlace");
                 return;
             }
             let direction = [2];
