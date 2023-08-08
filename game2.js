@@ -182,7 +182,7 @@ try{
             }
         }
     }
-    function onClick(event){
+    function mouseclick(event){
         getGame.click(event);
     }
     let game = new Game();
