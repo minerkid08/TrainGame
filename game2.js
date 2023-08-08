@@ -184,7 +184,7 @@ try{
             }
         }
     }
-    function mouseclick(event){
+    function mouseClick(event){
         getGame().click(event);
     }
     let game = new Game();
